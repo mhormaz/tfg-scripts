@@ -11,7 +11,7 @@ echo "================================================="
 echo "ACTUALIZAMOS INDICES Y NOS BAJAMOS CURL"
 # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
 apt-get update
-apt-get install -y losetup curl #software-properties-common
+apt-get install -y curl #software-properties-common
 
 echo "================================================="
 echo "ASEGURAMOS EL KEYRING"
@@ -48,6 +48,13 @@ echo "================================================="
 echo "EVITAMOS QUE SE PUEDAN ACTUALIZAR CRI-O, KUBELET, KUBEADM, KUBECTL"
 #Evitamos que se actualicen las dependencias necesarias
 apt-mark hold cri-o kubelet kubeadm kubectl
+
+echo "================================================="
+echo "ACTIVAMOS EL REENVIO DE IPv4"
+echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-kubernetes-ipforward.conf
+
+# Aplicamos los parámetros
+sysctl --system
 
 
 # Inicializamos los servicios de CRI-O y kubeadm
