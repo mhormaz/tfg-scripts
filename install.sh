@@ -11,7 +11,7 @@ echo "================================================="
 echo "ACTUALIZAMOS INDICES Y NOS BAJAMOS CURL"
 # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
 apt-get update
-apt-get install -y software-properties-common curl
+apt-get install -y util-linux curl #software-properties-common
 
 echo "================================================="
 echo "ASEGURAMOS EL KEYRING"
