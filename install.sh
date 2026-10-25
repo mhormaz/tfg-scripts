@@ -54,7 +54,7 @@ echo "ACTIVAMOS EL REENVIO DE IPv4"
 echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-kubernetes-ipforward.conf
 
 # Aplicamos los parámetros
-sysctl --system
+sudo sysctl --system
 
 
 # Inicializamos los servicios de CRI-O y kubeadm
