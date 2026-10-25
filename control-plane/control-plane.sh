@@ -1,3 +1,5 @@
+# Deja de ejecutarse si falla un comando (-e), se comprueban que existen todas las variables utilizadas (-u)
+# y todas las ejecuciones de comandos (-x) y errores (-o) se muestran por consola
 set -euo pipefail
 
 echo "================================================="
