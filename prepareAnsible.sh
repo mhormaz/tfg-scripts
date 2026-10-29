@@ -5,7 +5,7 @@ set -euo pipefail
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
 # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
-sudo apt update && sudo apt install ca-certificates gpg
+sudo apt update && sudo apt install ca-certificates gpg ssh
 
 
 echo "================================================="
