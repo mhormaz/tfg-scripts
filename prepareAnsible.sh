@@ -13,7 +13,7 @@ exec 2> >(tee -a ${LOG_DIR}/${LOG_FILE} >&2)
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
 # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
-apt update && apt -y install ca-certificates gpg ssh wget
+apt-get update && apt-get -y install ca-certificates gpg ssh wget
 
 
 echo "================================================="
@@ -25,4 +25,4 @@ echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa
 
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS ANSIBLE"
-apt update && apt install -y ansible
+apt-get update && apt-get install -y ansible
