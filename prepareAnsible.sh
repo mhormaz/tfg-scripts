@@ -2,6 +2,14 @@
 # y todas las ejecuciones de comandos (-x) y errores (-o) se muestran por consola
 set -euo pipefail
 
+# Creamos logs
+LOG_DIR="/var/log/installk8sNode/"
+mkdir -p $LOG_DIR
+
+LOG_FILE="instk8sNode.log"
+exec > >(tee -a ${LOG_DIR}/${LOG_FILE} )
+exec 2> >(tee -a ${LOG_DIR}/${LOG_FILE} >&2)
+
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
 # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
