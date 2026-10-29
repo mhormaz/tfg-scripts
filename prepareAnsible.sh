@@ -5,7 +5,7 @@ set -euo pipefail
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
 # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
-apt update && apt install ca-certificates gpg ssh wget
+apt update && apt -y install ca-certificates gpg ssh wget
 
 
 echo "================================================="
@@ -17,4 +17,4 @@ echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa
 
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS ANSIBLE"
-apt update && apt install ansible
+apt update && apt install -y ansible
