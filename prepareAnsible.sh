@@ -2,13 +2,18 @@
 # y todas las ejecuciones de comandos (-x) y errores (-o) se muestran por consola
 set -euo pipefail
 
+
 # Creamos logs
 LOG_DIR="/var/log/installk8sNode/"
 mkdir -p $LOG_DIR
 
-LOG_FILE="instk8sNode.log"
-exec > >(tee -a ${LOG_DIR}/${LOG_FILE} )
-exec 2> >(tee -a ${LOG_DIR}/${LOG_FILE} >&2)
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S.%s")
+LOG_FILE="instk8sNode_$TIMESTAMP.log"
+
+exec > >(tee -a ${LOG_DIR}/${LOG_FILE}) 2>&1
+
+echo "================================================="
+echo "SE HA CREADO UN REGISTRO DE LOGS EN: ${LOG_DIR}/${LOG_FILE}"
 
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
@@ -26,3 +31,7 @@ echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa
 echo "================================================="
 echo "ACTUALIZAMOS INDICES Y DESCARGAMOS ANSIBLE"
 apt-get update && apt-get install -y ansible
+
+
+echo "================================================="
+echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
