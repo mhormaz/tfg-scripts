@@ -34,4 +34,5 @@ apt-get update && apt-get install -y ansible
 
 
 echo "================================================="
-echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
+echo "SE HA COMPLETADO LA INSTALACIÓN CORRECTAMENTE"
+echo "Se puede utilizar aprovisionar este nodo para servir en el cluster"
