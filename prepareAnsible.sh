@@ -10,8 +10,11 @@ mkdir -p $LOG_DIR
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S.%s")
 LOG_FILE="instk8sNode_$TIMESTAMP.log"
 
+exec >> ${LOG_DIR}/${LOG_FILE}
+exec 2>&1
+
 #exec > >(tee -a ${LOG_DIR}/${LOG_FILE}) 2>&1
-{
+
 echo "================================================="
 echo "SE HA CREADO UN REGISTRO DE LOGS EN: ${LOG_DIR}/${LOG_FILE}"
 
@@ -37,4 +40,3 @@ apt-get update && apt-get install -y ansible
 echo "================================================="
 echo "SE HA COMPLETADO LA INSTALACIÓN CORRECTAMENTE"
 echo "Se puede utilizar aprovisionar este nodo para servir en el cluster"
-} > ${LOG_DIR}/${LOG_FILE}
