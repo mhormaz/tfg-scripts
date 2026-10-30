@@ -4,7 +4,7 @@ set -euo pipefail
 
 
 # Creamos logs
-LOG_DIR="/var/log/installk8sNode/"
+LOG_DIR="/var/log/installk8sNode"
 mkdir -p $LOG_DIR
 
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S.%s")
@@ -15,11 +15,13 @@ func_install() {
 
     echo "================================================="
     echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
+    echo "================================================="
     # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
     apt-get update && apt-get -y install ca-certificates gpg ssh wget
 
     echo "================================================="
     echo "INSTALAMOS REPO DE ANSIBLE"
+    echo "================================================="
     # Valido para debian e ubuntu
     UBUNTU_CODENAME='noble'
     FINGERPRINT='6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367'
@@ -37,14 +39,17 @@ EOF
     
     echo "================================================="
     echo "ACTUALIZAMOS INDICES Y DESCARGAMOS ANSIBLE"
+    echo "================================================="
     apt-get update && apt-get install -y ansible
 
     echo "================================================="
     echo "SE HA COMPLETADO LA INSTALACIÓN CORRECTAMENTE"
     echo "Se puede utilizar aprovisionar este nodo para servir en el cluster"
+    echo "================================================="
 }
 
-func_install > >(tee -a $LOG_FILE_FULL) 2>&1
-
-echo "================================================="
+echo "=============================================================================="
 echo "SE HA CREADO UN REGISTRO DE LOGS EN: $LOG_FILE_FULL"
+echo "=============================================================================="
+
+func_install > >(tee -a $LOG_FILE_FULL) 2>&1
