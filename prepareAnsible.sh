@@ -24,9 +24,9 @@ func_install() {
     UBUNTU_CODENAME='noble'
     FINGERPRINT='6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367'
 
-    wget -O- "https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0x${FINGERPRINT}" | sudo gpg --dearmor -o /usr/share/keyrings/ansible-archive-keyring.gpg
+    wget -O- "https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0x${FINGERPRINT}" | gpg --dearmor -o /usr/share/keyrings/ansible-archive-keyring.gpg
 
-cat <<EOF | sudo tee /etc/apt/sources.list.d/ansible.sources > /dev/null
+cat <<EOF | tee /etc/apt/sources.list.d/ansible.sources > /dev/null
     Types: deb
     URIs: https://ppa.launchpadcontent.net/ansible/ansible/ubuntu/
     Suites: ${UBUNTU_CODENAME}
