@@ -10,8 +10,8 @@ mkdir -p $LOG_DIR
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S.%s")
 LOG_FILE="instk8sNode_$TIMESTAMP.log"
 
-exec > >(tee -a ${LOGDIR}/${LOGFILE} )
-exec 2> >(tee -a ${LOGDIR}/${LOGFILE} >&2)
+exec > >(tee -a ${LOG_DIR}/${LOG_FILE})
+exec 2> >(tee -a ${LOG_DIR}/${LOG_FILE} >&2)
 
 echo "================================================="
 echo "SE HA CREADO UN REGISTRO DE LOGS EN: ${LOG_DIR}/${LOG_FILE}"
