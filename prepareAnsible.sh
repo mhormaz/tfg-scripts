@@ -4,7 +4,7 @@ set -euo pipefail
 
 
 # Creamos logs
-LOG_DIR="/var/log/installk8sNode"
+LOG_DIR="/var/log/installk8sNodeAnsible"
 mkdir -p $LOG_DIR
 
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S.%s")

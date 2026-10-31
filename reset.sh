@@ -1,1 +1,0 @@
-kubeadm reset --cri-socket='unix:///var/run/crio/crio.sock'
