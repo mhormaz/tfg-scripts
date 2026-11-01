@@ -16,7 +16,7 @@ apt-get install -y ca-certificates curl gpg #software-properties-common
 echo "================================================="
 echo "ASEGURAMOS EL KEYRING"
 # Aseguramos que existe la carepta keyring para las claves
-#sudo install -m 0755 -d /etc/apt/keyrings
+install -m 0755 -d /etc/apt/keyrings
 
 echo "================================================="
 echo "INSTALAMOS EL CERTIFICADO DEL REPO DE KUBERNETES AL KEYRING"
@@ -54,13 +54,11 @@ echo "ACTIVAMOS EL REENVIO DE IPv4"
 echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-kubernetes-ipforward.conf
 
 # Aplicamos los parámetros
-sudo sysctl --system
-
+sysctl --system
 
 # Inicializamos los servicios de CRI-O y kubeadm
 #systemctl enable --now kubelet
 systemctl start crio.service
 
-#KUBE_EXTRA_ARGS+='--cri-socket "unix:///var/run/crio/crio.sock"'
-
-#echo KUBELET_EXTRA_ARGS=$KUBE_EXTRA_ARGS | sudo tee /etc/default/kubelet
+# Agregamos el módulo net_filter del kernel para el tráfico de red
+modprobe br_netfilter
