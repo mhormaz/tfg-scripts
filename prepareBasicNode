@@ -13,9 +13,9 @@ LOG_FILE_FULL=${LOG_DIR}/${LOG_FILE}
 
 packages_debian() {
     echo "================================================="
-    echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG, SSH Y CA-CERTIFICATES"
+    echo "ACTUALIZAMOS INDICES Y DESCARGAMOS SSH Y PYTHON3"
     echo "================================================="
-    apt-get update && apt-get -y install ca-certificates gpg ssh
+    apt-get update && apt-get -y install ssh python3
 }
 
 func_install() {
