@@ -42,8 +42,8 @@ iface lo inet loopback
 auto $CURRENT_INTERFACE
 iface $CURRENT_INTERFACE inet static
     address $CURRENT_IP
-    gateway $GATEWAY
-    dns-nameservers $DNS
+    gateway $CURRENT_GATEWAY
+    dns-nameservers $CURRENT_DNS
 EOF
 
     # Guardar configuración anterior
@@ -60,7 +60,7 @@ func_install() {
     packages_debian
 
     static_ip
-    
+
     echo "================================================="
     echo "SE HA COMPLETADO LA INSTALACIÓN CORRECTAMENTE"
     echo "Este nodo está listo para ser aprovisionado en el cluster"
