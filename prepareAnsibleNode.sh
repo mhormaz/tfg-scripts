@@ -8,13 +8,13 @@ LOG_DIR="/var/log/installk8sNodeAnsible"
 mkdir -p $LOG_DIR
 
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S.%s")
-LOG_FILE="instk8sNode_$TIMESTAMP.log"
+LOG_FILE="ansiblek8sNode_$TIMESTAMP.log"
 LOG_FILE_FULL=${LOG_DIR}/${LOG_FILE}
 
-func_install() {
-
+# Función para instalar Ansible en Debian
+ansible_debian() {
     echo "================================================="
-    echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG Y CA-CERTIFICATES"
+    echo "ACTUALIZAMOS INDICES Y DESCARGAMOS GPG, WGET, SSH Y CA-CERTIFICATES"
     echo "================================================="
     # Actualizamos los índices de los repositorios para bajarnos las últimas versiones de los paquetes
     apt-get update && apt-get -y install ca-certificates gpg ssh wget
@@ -42,7 +42,11 @@ EOF
     echo "ACTUALIZAMOS INDICES Y DESCARGAMOS ANSIBLE"
     echo "================================================="
     apt-get update && apt-get install -y ansible
+}
 
+func_install() {
+
+    ansible_debian
     echo "================================================="
     echo "SE HA COMPLETADO LA INSTALACIÓN CORRECTAMENTE"
     echo "Se puede utilizar aprovisionar este nodo para servir en el cluster"
