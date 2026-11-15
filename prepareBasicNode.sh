@@ -58,6 +58,9 @@ EOF
 func_install() {
 
     packages_debian
+
+    static_ip
+    
     echo "================================================="
     echo "SE HA COMPLETADO LA INSTALACIÓN CORRECTAMENTE"
     echo "Este nodo está listo para ser aprovisionado en el cluster"
