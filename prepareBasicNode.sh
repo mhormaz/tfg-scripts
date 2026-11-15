@@ -15,7 +15,7 @@ packages_debian() {
     echo "================================================="
     echo "ACTUALIZAMOS INDICES Y DESCARGAMOS SSH, PYTHON3 Y NMCLI"
     echo "================================================="
-    apt-get update && apt-get -y install ssh python3 python3-debian python3-venv nmcli 
+    apt-get update && apt-get -y install ssh python3 python3-debian python3-venv 
 }
 
 static_ip() {
