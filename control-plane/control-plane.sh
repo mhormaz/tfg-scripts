@@ -5,7 +5,7 @@ set -euo pipefail
 echo "================================================="
 echo "VARIABLES PARA KUBEADM - CONTROL PLANE y CRI"
 
-# "head -1" para el DNS, "tail -1" para la ip
+# "head -1" para el GATEWAY, "tail -1" para la ip
 IP=$(ip route show default | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | tail -1)
 
 # Poniendo 2>/dev/null mandamos la salida de CRIO a la consola de error para evitar los mensajes de 
