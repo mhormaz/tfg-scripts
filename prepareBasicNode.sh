@@ -23,8 +23,8 @@ static_ip() {
     # "head -1" para el GATEWAY, "tail -1" para la ip
     CURRENT_IP=$(ip route show default | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | tail -1)
     CURRENT_GATEWAY=$(ip route show default | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
-    CURRENT_DNS= $(cat /etc/resolv.conf | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | xargs)
-    CURRENT_INTERFACE= $(ip route show default | grep -oP 'dev (.+?) ' | cut -d ' ' -f2)
+    CURRENT_DNS=$(cat /etc/resolv.conf | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | xargs)
+    CURRENT_INTERFACE=$(ip route show default | grep -oP 'dev (.+?) ' | cut -d ' ' -f2)
 
     # Directorio de configuracion de las interfaces de red
     INTERFACE_DIR="/etc/network/interfaces"
