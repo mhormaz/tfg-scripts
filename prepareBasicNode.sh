@@ -46,8 +46,10 @@ iface $CURRENT_INTERFACE inet static
     dns-nameservers $CURRENT_DNS
 EOF
 
-    # Guardar configuración anterior
+    # Aplicamos la configuración nueva
     cp /tmp/interfaces.static "$INTERFACE_DIR"
+
+    sudo ifdown $CURRENT_INTERFACE && sudo ifup $CURRENT_INTERFACE
 
     echo "================================================="
     echo "APLICADA LA SIGUIENTE CONFIGURACIÓN DE LA INTERFAZ DE RED"
@@ -59,7 +61,7 @@ func_install() {
 
     packages_debian
 
-    static_ip
+    #static_ip
 
     echo "================================================="
     echo "SE HA COMPLETADO LA INSTALACIÓN CORRECTAMENTE"
